@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useRef, useState, type ChangeEvent } from "react"
 import useAuthStore from "../store/useAuthStore"
 import toast from 'react-hot-toast'
 import useNavigationStore from "../store/useNavigationStore"
@@ -25,7 +25,7 @@ const Profile = () => {
         fileInputRef.current?.click()
     }
 
-    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleImageUpload = async (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]
         if (!file) return
 
