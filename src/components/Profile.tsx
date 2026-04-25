@@ -1,15 +1,15 @@
+import { useRef, useState } from "react"
 import useAuthStore from "../store/useAuthStore"
 import toast from 'react-hot-toast'
 import useNavigationStore from "../store/useNavigationStore"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPencil } from "@fortawesome/free-solid-svg-icons"
-import { useRef, useState } from "react"
 
 const Profile = () => {
     const fileInputRef = useRef<HTMLInputElement>(null)
     const { isSigningOut, signOut, authUser, updateProfile, avatar } = useAuthStore()
     const { isPopupOpen, closePopup } = useNavigationStore()
-    const [image, setImage] = useState(avatar || authUser?.avatar_url)
+    const [image, setImage] = useState<string | undefined>(avatar || authUser?.avatar_url)
 
     const handleLogout = () => {
         signOut()
@@ -25,7 +25,7 @@ const Profile = () => {
         fileInputRef.current?.click()
     }
 
-    const handleImageUpload = async (e) => {
+    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]
         if (!file) return
 
