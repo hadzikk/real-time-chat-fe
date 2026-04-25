@@ -12,13 +12,9 @@ const Profile = () => {
     const [image, setImage] = useState(avatar || authUser?.avatar_url)
 
     const handleLogout = () => {
-        try {
-            signOut()
-            toast.success('Sign out success!')
-            closePopup()
-        } catch (error) {
-            toast.error(error)
-        }
+        signOut()
+        toast.success('Sign out success!')
+        closePopup()
     }
 
     const handleClosePopup = () => {
