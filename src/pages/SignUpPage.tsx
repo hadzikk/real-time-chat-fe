@@ -44,7 +44,7 @@ const SignUpPage = () => {
         return isValid
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         const success = validateForm()

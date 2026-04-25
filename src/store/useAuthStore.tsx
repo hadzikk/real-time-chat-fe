@@ -4,8 +4,8 @@ import axiosInstance from '../libs/axios'
 interface User {
     username: string,
     full_name: string,
-    avatar_url: string,
-    createdAt: string
+    avatar_url?: string,
+    createdAt?: string
 }
 
 interface AuthState {
