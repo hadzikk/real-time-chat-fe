@@ -1,4 +1,12 @@
-const PersonalChat = ({ avatar_url, full_name, message, isSelected, messageCount }) => {
+interface PersonalChatProps {
+    avatar_url: string,
+    full_name: string,
+    message: string,
+    isSelected: boolean,
+    messageCount: number,
+}
+
+const PersonalChat = ({ avatar_url, full_name, message, isSelected, messageCount }: PersonalChatProps) => {
     return <li className={isSelected ? 'rounded-sm p-2 inline-block w-full bg-mist-100' : 'rounded-sm p-2 inline-block w-full hover:bg-mist-100'}>
                 <a href="" className="w-full flex items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
