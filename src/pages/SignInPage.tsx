@@ -35,7 +35,7 @@ const SignInPage = () => {
         return isValid
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         const success = validateForm()
@@ -49,7 +49,9 @@ const SignInPage = () => {
             await signIn(payload)
             toast.success('Sign in successfull!')
         } catch (error) {
-            console.error(error.response?.data?.message)
+            if (error instanceof Error) {
+                console.error(error.message)
+            }
             toast.error('Incorrect username or password')
         }
     }

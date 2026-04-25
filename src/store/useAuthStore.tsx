@@ -5,6 +5,7 @@ interface User {
     username: string,
     full_name: string,
     avatar_url: string,
+    createdAt: string
 }
 
 interface AuthState {
@@ -15,12 +16,12 @@ interface AuthState {
     isSigningOut: boolean,
     isUpdatingProfile: boolean,
     isCheckingAuth: boolean,
-    avatar: string | ArrayBuffer | null,
+    avatar: string | null,
     checkAuth: () => Promise<void>,
     signUp: (data: User) => Promise<void>,
     signIn: (data: { username: string, password: string }) => Promise<void>,
     signOut: () => Promise<void>,
-    updateProfile: (data: { avatar: string | ArrayBuffer | null }) => Promise<void>,
+    updateProfile: (data: { avatar: string| ArrayBuffer | null }) => Promise<void>,
 }
 
 const useAuthStore = create<AuthState>((set) => ({
