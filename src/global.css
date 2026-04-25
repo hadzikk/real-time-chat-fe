@@ -1,0 +1,14 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,401,500,501,700,701,900,901&f[]=manrope@200,300,400,500,600,700,800&display=swap');
+@import "tailwindcss";
+
+@utility no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
+
+* {
+    font-family: 'Manrope', sans-serif;
+}
