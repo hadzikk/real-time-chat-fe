@@ -5,7 +5,7 @@ import useChatStore from "../store/useChatStore"
 import { useEffect } from "react"
 
 const Sidebar = () => {
-    const { getUsers, users, isUserLoading } = useChatStore()
+    const { getUsers, users = [], isUserLoading } = useChatStore()
 
     useEffect(() => {
         getUsers()
@@ -37,16 +37,21 @@ const Sidebar = () => {
             />
         </div>
         <ul className="w-full flex flex-col gap-1 overflow-y-auto no-scrollbar">
-            {users?.map((user) => (
-                <PersonalChat
-                    key={user._id}
-                    avatar_url={user.avatar_url}
-                    full_name={user.full_name}
-                    messageCount={1}
-                    message={"p"}
-                    isSelected={false}
-                />
-            ))}
+            {users.length > 0 ? (
+                users.map((user) => (
+                    <PersonalChat
+                        key={user._id}
+                        {...user}
+                        messageCount={1}
+                        message={"p"}
+                        isSelected={false}
+                    />
+                ))
+            ) : (
+                <div className="text-center text-xs text-gray-500 mt-4">
+                    No contacts found.
+                </div>
+            )}
         </ul>
     </div>
 }

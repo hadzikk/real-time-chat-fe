@@ -30,9 +30,11 @@ const useChatStore = create<ChatProps>((set) => ({
         set({ isUserLoading: true })
         try {
             const response = await axiosInstance.get('/message/get-contact-list')
-            set({ users: response.data })
+            const userData = Array.isArray(response) ? response : (Array.isArray(response?.data) ? response.data : [])
+            set({ users: userData })
         } catch (error) {
             console.error('Error in fetching users: ', error)
+            set({ users: [] })
         } finally {
             set({ isUserLoading: false })
         }
