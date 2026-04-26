@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import axiosInstance from '../libs/axios'
 
 interface User {
+    _id?: string, 
     username: string,
     full_name: string,
     avatar_url?: string,
@@ -37,6 +38,10 @@ const useAuthStore = create<AuthState>((set) => ({
     checkAuth: async () => {
         try {
             const response = await axiosInstance.get('/auth/check', { withCredentials: true })
+            if (typeof response.data === 'string' && response.data.includes('<!doctype html>')) {
+                set({ authUser: null })
+                return
+            }
             set({ authUser: response.data })
         } catch (error) {
             console.error('Error in checking authentication: ', error)

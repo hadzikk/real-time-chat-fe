@@ -4,8 +4,6 @@ import useAuthStore from "./store/useAuthStore"
 import HomePage from "./pages/HomePage"
 import SignUpPage from "./pages/SignUpPage"
 import SignInPage from "./pages/SignInPage"
-import SettingsPage from "./pages/SettingsPage"
-import ProfilePage from "./pages/ProfilePage"
 import { Toaster } from "react-hot-toast"
 
 const App = () => {
@@ -26,11 +24,9 @@ const App = () => {
   return (
       <div>
         <Routes>
-          <Route path="/chat" element={authUser !== null ? <HomePage /> : <Navigate to="/signin" />} />
-          <Route path="/signup" element={authUser ? <Navigate to="/chat" /> : <SignUpPage />} />
-          <Route path="/signin" element={authUser ? <Navigate to="/chat" /> : <SignInPage />} />
-          <Route path="/settings" element={authUser ? <SettingsPage /> : <Navigate to="/" />} />
-          <Route path="/profile" element={authUser ? <ProfilePage /> : <Navigate to="/" /> } />
+          <Route path="/chat" element={authUser?._id !== null ? <HomePage /> : <Navigate to="/signin" />} />
+          <Route path="/signup" element={authUser?._id !== null ? <Navigate to="/chat" /> : <SignUpPage />} />
+          <Route path="/signin" element={authUser?._id !== null ? <Navigate to="/chat" /> : <SignInPage />} />
         </Routes>
 
         <Toaster 
