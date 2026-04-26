@@ -1,8 +1,8 @@
 interface PersonalChatProps {
     avatar_url: string,
     full_name: string,
-    message: string,
-    isSelected: boolean,
+    message?: string,
+    isSelected?: boolean,
     messageCount: number,
 }
 

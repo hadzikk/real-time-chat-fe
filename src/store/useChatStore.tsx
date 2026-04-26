@@ -1,9 +1,15 @@
 import { create } from 'zustand'
 import axiosInstance from '../libs/axios'
 
+type User = {
+    _id: string,
+    full_name: string,
+    avatar_url: string
+}
+
 interface ChatProps {
     messages?: [],
-    users?: [],
+    users?: User[],
     selectedUser?: null | string,
     isUserLoading?: boolean,
     isMessagesLoading?: boolean,

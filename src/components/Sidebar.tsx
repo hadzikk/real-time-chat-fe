@@ -5,9 +5,7 @@ import useChatStore from "../store/useChatStore"
 import { useEffect } from "react"
 
 const Sidebar = () => {
-    const { getUsers, users, setSelectedUser, selectedUser, isUserLoading } = useChatStore()
-
-    const onlineUsers = []
+    const { getUsers, users, isUserLoading } = useChatStore()
 
     useEffect(() => {
         getUsers()
@@ -46,6 +44,7 @@ const Sidebar = () => {
                     full_name={user.full_name}
                     messageCount={1}
                     message={"p"}
+                    isSelected={false}
                 />
             ))}
         </ul>
