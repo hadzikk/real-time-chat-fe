@@ -26,7 +26,7 @@ const App = () => {
   return (
       <div>
         <Routes>
-          <Route path="/chat" element={authUser ? <HomePage /> : <Navigate to="/signin" />} />
+          <Route path="/chat" element={authUser !== null ? <HomePage /> : <Navigate to="/signin" />} />
           <Route path="/signup" element={authUser ? <Navigate to="/chat" /> : <SignUpPage />} />
           <Route path="/signin" element={authUser ? <Navigate to="/chat" /> : <SignInPage />} />
           <Route path="/settings" element={authUser ? <SettingsPage /> : <Navigate to="/" />} />
