@@ -24,9 +24,9 @@ const App = () => {
   return (
       <div>
         <Routes>
-          <Route path="/chat" element={authUser?._id !== null ? <HomePage /> : <Navigate to="/signin" />} />
-          <Route path="/signup" element={authUser?._id !== null ? <Navigate to="/chat" /> : <SignUpPage />} />
-          <Route path="/signin" element={authUser?._id !== null ? <Navigate to="/chat" /> : <SignInPage />} />
+          <Route path="/chat" element={authUser !== null ? <HomePage /> : <Navigate to="/signin" />} />
+          <Route path="/signup" element={authUser !== null ? <Navigate to="/chat" /> : <SignUpPage />} />
+          <Route path="/signin" element={authUser !== null ? <Navigate to="/chat" /> : <SignInPage />} />
         </Routes>
 
         <Toaster 
