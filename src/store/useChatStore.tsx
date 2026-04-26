@@ -1,7 +1,19 @@
 import { create } from 'zustand'
 import axiosInstance from '../libs/axios'
 
-const useChatStore = create((set) => ({
+interface ChatProps {
+    messages?: [],
+    users?: [],
+    selectedUser?: null | string,
+    isUserLoading?: boolean,
+    isMessagesLoading?: boolean,
+    getUsers: () => Promise<void>,
+    getMessages: (userId: string) => Promise<void>,
+    setSelectedUser: (selectedUser: string) => void,
+
+}
+
+const useChatStore = create<ChatProps>((set) => ({
     messages: [],
     users: [],
     selectedUser: null,
@@ -18,7 +30,19 @@ const useChatStore = create((set) => ({
         } finally {
             set({ isUserLoading: false })
         }
-    }
+    },
+    getMessages: async (userId) => {
+        set({ isMessagesLoading: true })
+        try {
+            const response = await axiosInstance.get(`/${userId}`)
+            set({ messages: response.data })
+        } catch (error) {
+            console.error('Error in fething messages: ', error)
+        } finally {
+            set({ isMessagesLoading: false })
+        }
+    },
+    setSelectedUser: (selectedUser) => set({ selectedUser })
 }))
 
 export default useChatStore

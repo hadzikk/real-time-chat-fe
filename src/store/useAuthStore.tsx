@@ -84,7 +84,6 @@ const useAuthStore = create<AuthState>((set) => ({
         }
     },
     updateProfile: async (data) => {
-        set({isUpdatingProfile: true})
         try {
             const response = await axiosInstance.put('/user/update-avatar', data)
             set({ authUser: response.data })

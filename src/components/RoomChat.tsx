@@ -1,6 +1,6 @@
 const RoomChat = () => {
     return <div className="w-4/5 h-full p-4">
-        <div className="w-full flex flex-col items-center justify-center">
+        {/* <div className="w-full flex flex-col items-center justify-center">
             <div className="w-10 h-10 rounded-full">
                 <img
                     className="w-full h-full rounded-full object-cover object-fit object-center" 
@@ -9,7 +9,7 @@ const RoomChat = () => {
                 />
             </div>
             <p className="font-bold">Rex Orange County</p>
-        </div>
+        </div> */}
         <div className="w-full h-full">
         </div>
     </div>
